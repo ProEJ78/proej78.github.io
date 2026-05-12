@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Calculator</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111827;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: #1f2937;
+      padding: 30px;
+      border-radius: 16px;
+      width: 350px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .item {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    .total {
+      font-size: 28px;
+      text-align: center;
+      margin-top: 30px;
+      font-weight: bold;
+      color: #60a5fa;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Order Calculator</h1>
+
+    <div class="item">
+      <label>Product A (£10 each)</label>
+      <input type="number" id="a" value="0" min="0">
+    </div>
+
+    <div class="item">
+      <label>Product B (£25 each)</label>
+      <input type="number" id="b" value="0" min="0">
+    </div>
+
+    <div class="item">
+      <label>Product C (£50 each)</label>
+      <input type="number" id="c" value="0" min="0">
+    </div>
+
+    <div class="total">
+      Total: £<span id="total">0</span>
+    </div>
+  </div>
+
+  <script>
+    const inputs = document.querySelectorAll("input");
+
+    function calculate() {
+      const a = Number(document.getElementById("a").value);
+      const b = Number(document.getElementById("b").value);
+      const c = Number(document.getElementById("c").value);
+
+      const total = (a * 10) + (b * 25) + (c * 50);
+
+      document.getElementById("total").innerText = total.toFixed(2);
+    }
+
+    inputs.forEach(input => {
+      input.addEventListener("input", calculate);
+    });
+
+    calculate();
+  </script>
+
+</body>
+</html>
